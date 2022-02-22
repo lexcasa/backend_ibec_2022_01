@@ -1,0 +1,146 @@
+BACKEND 
+    -> Desarrollo de API's 
+        -> NodeJS / ExpressJS
+    -> Base de datos: MYSQL
+
+---
+
+    -> Conocimientos previos
+
+        -> PP. Javascript
+        -> Algoritmos
+        -> GIT
+        -> Postman
+
+
+Que es una API? 
+
+    -> Application Programming interface
+
+    Arq: 
+
+        [Base de datos] <---> [API] <----> [Aplicaciones]
+
+        -> Base de datos
+            -> MYSQL
+            -> Postgres
+            -> MongoDB
+            ... 
+        
+        -> API
+            -> Input de datos
+            -> Output de datos
+
+                -> Tienen que viajar en un std de datos
+                -> Protocolo de transferencia
+        
+        API: 
+            -> Se va a comunicar a traves de HTTP (protocolo)
+            -> Enviar y recibir un JSON (XML, GraphQL, ...)
+
+        
+        EJEMPLO: Productos de una tienda
+
+            -> A nivel de base de datos como se estructura una tienda y sus productos
+            -> Generar las consultas para obtener esos productos
+            -> Servir los datos en un lenguaje de programacion (JS con NodeJS)
+            -> Esos datos que estan corriendo en NodeJS
+                -> Transformarse en un std. de datos (JSON)
+                    -> Trasmitirlos por HTTP hacia el cliente
+
+        Servicio: 
+
+            -> URL, Metodo
+            /productos , Obtener (GET)
+
+            -> Entrega los datos en una respuesta
+
+               Productos: [
+                    {...},
+                    ...
+                ]
+
+            -> Datos del servicio (base de datos): 
+                -> Que es un modelo, que es una entidad, que son relaciones
+                -> Como funciona la consistencia de datos
+
+    ----
+
+    Pre-requisitos
+
+        -> Repasar: Principios de JS, Algoritmos, GIT
+        -> Instalar: nodejs
+        -> Instalar: postman
+
+
+    Arq. de tres capas
+
+        -> Controller
+        -> Service Layer
+        -> Data Acces Layer
+
+                          | ---------------Backend --------------------------------------------|
+        [Base de datos] <---> [Data Access Layer] <---> [Services] <----> [Controllers] ---> I/O
+
+
+        EJEMPLO: Tienda de productos
+
+            -> Base de datos: tienda
+            -> DAL: package mysql
+            -> Services: Productos.js
+                            -> function obtenerTodosLosProductos ( ... )
+            -> Controller
+                -> Instanciamos la API
+                -> Provee una URL para consumir o enviar datos
+                    -> Una vez que se genera una accion a esa URL
+                        -> Se comunica con la funcion obtenerTodosLosProductos
+                            -> Va a devolver los datos en un std. datos
+
+            ---- 
+    
+    Patrón de diseño Factory: 
+
+        -> Va a ser SUPER IMPORTANTE para estructurar nuestros servicios
+        -> Vamos a definir el negocio de la API en un objeto que tiene funciones que se pueden acceder invocando on-demand
+    
+    const Producto = {
+        obtenerTodosLosProductos: funcion (){
+            // Logica
+            return [{...}, ...]
+        }
+    }
+    module.exports = Producto
+
+    - COMO HACEMOS PARA CORRER JS Desde el servidor?
+
+        -> NodeJS
+        -> Necesitamos aplicar los pp. de javascript dentro de ese JS
+
+    PASOS Setup backend: 
+
+    1. Iniciar el proyecto con el gestor de paquetes npm
+        1.1 npm init (en la carpeta de mi backend)
+
+    2. Crear un archivo .gitignore
+        -> package-lock.json
+        -> node_modules
+
+    3. Escribir un breve console.log("hola")
+    4. Correr el archivo app.js en consola
+        4.1 node app.js
+
+    EJERCICIO RAPAIDO I: 
+
+        1. Instalar el nodejs
+        2. Crear una carpeta con un archivo app.js
+        3. Escribir un valor en consola (console.log("Hola"))
+        4. Correr el archivo app.js dentro de la carpeta
+            4.1 node app.js
+
+    EJERCICIO RAPIDO II: 
+
+        1. Input: ["B","B","C","A","A"] -> Output: ["B","A"]
+        2. Input: [1,2,0,"B","B","C",["A","A"]] -> Output: ["B", ["A"]]
+
+
+    
