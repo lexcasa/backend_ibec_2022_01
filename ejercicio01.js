@@ -6,15 +6,22 @@ let output  = []
 // Solo el elemento dentro del output
 // Deberes: Como resolver en un FOR solo
 
+const arrMap = {}
+// hashmap: key -> value
+// obj: {key: 1}
 for (let i = 0; i < input.length; i++){
     let count = 0
-    for(let j = 0; j < input.length; j++){
-        if(input[j] == input[i]){
-            count++
-        }
+    
+    if(input.includes(input[i])){
+        // variable = (si variable existe) ? true : false
+        // i = 0 -> input[0] -> "B"
+        // arrMap["B"] = arrMap["B"] ? arrMap["B"] + 1 : 1 -> arrMap["B"] vale 1
+        // i = 1 -> input[1] -> "B" -> arrMap["B"] vale 2
+
+        arrMap[ input[i] ] = arrMap[ input[i] ] ? arrMap[ input[i] ] + 1 : 1
     }
     
-    if(count > 1 && !output.includes( input[i])){
+    if(arrMap[ input[i] ] > 1 && !output.includes( input[i])){
         output.push( input[i] )
     }
 }
