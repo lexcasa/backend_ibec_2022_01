@@ -34,8 +34,88 @@ o(A) -> T( o(A) ) = log( N^2 ) -> 2 log (N) ~> 2N
         7. Setup del express
         8. correr: 
             -> nodemon app.js
+        9. Entrar: http://localhost:3000/
 
     --> Una vez que tengamos el proyecto en la maquina
         La idea es que pueda instalar las dependencias
             -> npm i
 
+    EJEMPLO:
+        -> Loguear a facebook
+            -> Usuario 
+            -> Clave
+    
+    [ Base de datos ] <----> [ API ] <--- [Usuario, Clave] ---> [ App Facebook - FrontEnd ]
+
+    -> FrontEnd
+        -> HTTP: Protocolo de transmision de texto
+
+        Usuario:alex
+        Clave:1234
+                ----> HTTP ---> API de Facebook 
+                <---- HTTP ---- 
+
+                    -> Response: Texto
+                    -> Status code: 200 OK (2XX)
+
+    Todos quieren consumir la API de Alejandro
+        -> Cada cliente tiene N tecnologias diferentes
+
+        -> SDK para todas las tecnologias de clientes que se van a conectar
+        -> O utilizo un std de datos que se puede consumir de todas las tecnologias
+
+    [ NodeJS: API ] ----> std. de datos : JSON
+
+        JavaScript Object Notation : JSON
+
+        Persona (JSON): 
+            {"nombre": "Alex"}
+
+        Std XML
+            <Persona>
+                <Nombre>Alex</Nombre>
+            </Persona>
+
+                
+        API: 
+            -> URL's que exponen datos
+            -> Texto (documento)
+                -> Std de tipo JSON
+        
+        REST -> Orientado a estados
+            Par: (URL, metodo)
+
+        HTTP: 
+            -> GET
+            -> POST 
+            -> PUT
+            -> DELETE
+
+        PROBLEMA: Obtener datos de usuarios
+
+            GET api.com/usuarios 
+
+            Estado: 
+                (/usuarios, GET)
+
+                Devuelve: 
+                    -> Lista de usuarios
+                    
+                        [
+                            {nombre: "Alex"},
+                            ...
+                        ]
+
+            POST api.com/login
+
+                Estado: (/login, POST)
+                Payload: 
+                    {usuario: "alex", clave: "1234"}
+
+                Response:
+                
+                    Status code: 200
+                    Body:  
+                        {
+                            success: true
+                        }
