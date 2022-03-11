@@ -1,0 +1,117 @@
+- SETUP de una API en Express
+
+    API de una Calculadora
+
+        -> Modulo reutilizable del core de una calculadora
+        -> Como utilizamos esas operaciones como servicios
+        -> Comunicacion de las op. con una API
+    
+    Calculadora: 
+        -> Suma
+        -> Resta
+        -> Multiplicacion
+        -> Division
+            -> a / b, b !== 0
+    
+    -> Servicio: 
+        -> Todas las operaciones de la calculadora
+        -> Exportar en un modulo reutilizable
+
+    -> Setup de un servicio: 
+        -> Crear carpeta: services
+        -> Dentro de la carpeta, creamos el archivo calculadora.service.js
+        -> Utilizamos un paradigma de factory
+            -> Definimos un objeto: Calculadora y agregamos todas las funciones a la calculadora
+
+    EJERCICIO RAPIDO #1 [x]
+        -> Mostrar un resultado de la calculadora en la pantalla del "Hello World"
+
+        -> Primer problema a resolver: 
+            -> Como invoco el calculadora.service dentro del app.js
+            -> Pista: se que puedo invocar el express que esta dentro del node_modules a traves del require('express')
+            -> Como transformo ese servicio en un modulo? 
+                Exporto de la siguiente forma: 
+                    1. En el archivo calculadora.service agrego la siguiente linea: 
+                    2. module.exports = Calculadora;
+                    3. Lo puedo utilizar accediendo a traves del require
+
+    EJERCICIO RAPIDO #2 
+        -> Una API para todas las Op. de la calculadora
+
+        -> API de tipo REST
+        -> # Estados: 4
+
+            -> Estado #1 : Suma
+            -> Estado #2 : Resta
+            -> Estado #3 : Multiplicacion
+            -> Estado #4 : Division
+
+        METODOS HTTP:
+
+            -> GET
+            -> POST
+            -> PUT
+            -> DELETE
+
+        Estado: (URL, Metodo)
+
+        -> Estado #1: (api.com/suma,          POST)
+            Payload: 
+                {
+                    "a": ...,
+                    "b": ...
+                }
+        -> Estado #2: (api.com/resta/:a/:b,   GET) -> api.com/resta/1/2
+        -> Estado #3: (api.com/multi,         PUT)
+            Payload: 
+                    {
+                        "a": ...,
+                        "b": ...
+                    }
+        -> Estado #4: (api.com/divi/:a/:b,   DELETE)
+
+    EJERCICIO RAPIDO #3
+
+        Estado #2: (api.com/resta/:a/:b,   GET)
+
+            -> Vamos a mandar por parametro de URL dos numeros: a y b
+            -> Nos devuelve una respuesta de tipo JSON
+                -> {
+                    resultado: 0
+                }
+        ----
+
+        SUBPROBLEMAS: 
+
+            1. Como un GET arbitrario me devuelve un JSON?
+
+            EJERCICIO RAPIDO #4:
+                -> Hacer 5 API (GET)
+
+                    -> URL: localhost:3000/hola/mundo
+                        -> {
+                            respuesta: "Hola"
+                        }
+
+                    -> URL: localhost:3000/mi-nombre
+                        -> {
+                            respuesta: "Alex"
+                        }
+
+                    -> URL: localhost:3000/saludo
+                        -> {
+                            saludo: "Buenas tardes"
+                        }
+                    
+                    -> URL: localhost:3000/numeros
+                        -> {
+                            numero: 15
+                        }
+                    
+                    -> URL: localhost:3000/nombre/apellido
+                        -> {
+                            persona: {
+                                nombre: "Alex",
+                                apellido: "Casadevall"
+                            }
+                        }
