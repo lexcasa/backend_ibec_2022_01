@@ -9,7 +9,7 @@ const Calculadora = {
         return a * b
     },
     divi: function (a, b){
-        if(b !== 0){
+        if(b != 0){
             return a / b
         }
         return 'error'
