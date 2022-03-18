@@ -12,3 +12,24 @@ Calculadora
                     resultado: 133
                 }
         -> PUT  /multi
+
+    EJERCICIO RAPIDO #1: 
+        -> Crear un servicio que tenga las operaciones sumatoria y multiplicatoria
+            -> Sumatoria: suma todos los elementos de un array
+                -> Input: array
+                -> Out: numero
+            -> multiplicatoria: multiplicar todos los elementos de un array
+                -> Input: array
+                -> Out: numero
+
+        -> Exponer estas operaciones en dos estados
+
+            -> Sumatoria: POST /sumatoria
+                {
+                    "parametros": [1, 2, 3, 4]
+                }
+            
+            -> multiplicatoria: PUT /multiplicatoria
+                {
+                    "parametros": [1, 2, 3, 4]
+                }
