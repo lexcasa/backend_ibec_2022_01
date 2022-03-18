@@ -1,0 +1,14 @@
+Calculadora
+
+    Estados:
+        -> POST /suma
+            -> Payload: 
+                {
+                    "a": 123,
+                    "b": 10
+                }
+            -> Response: 
+                {
+                    resultado: 133
+                }
+        -> PUT  /multi

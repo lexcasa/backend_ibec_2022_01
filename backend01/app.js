@@ -1,9 +1,11 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
-const {suma, resta, divi} = require('./services/calculadora.service')
+const {suma, resta, divi, multi} = require('./services/calculadora.service')
 // const Calculadora = require('./services/calculadora.service')
 
+app.use(bodyParser.json())
 app.get('/', (req, res) => {
   const numTotal = suma(1,2)
 
@@ -18,6 +20,23 @@ app.get('/resta/:a/:b', (req, res) => {
   const numTotal = resta(a,b)
 
   res.send({resultado: numTotal})
+})
+
+// Suma
+app.post('/suma', (req, res) => {
+    console.log("que llega del post :: ", req.body)
+    const payload   = req.body
+    const numTotal  = suma(payload.a, payload.b)
+
+    res.send({resultado: numTotal})
+})
+
+// Multiplicacion
+app.put('/multi', (req, res) => {
+    const payload   = req.body
+    const numTotal  = multi(payload.a, payload.b)
+
+    res.send({resultado: numTotal})
 })
 
 // Division
