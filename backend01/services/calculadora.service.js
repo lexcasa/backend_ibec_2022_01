@@ -15,4 +15,6 @@ const Calculadora = {
         return 'error'
     }
 }
+console.log("suma: ", Calculadora.suma(1, 2))
+// console.log("sumatoria: ", Calculadora.sumatoria([1,2,2]))
 module.exports = Calculadora;

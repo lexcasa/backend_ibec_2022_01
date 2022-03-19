@@ -14,22 +14,171 @@ Calculadora
         -> PUT  /multi
 
     EJERCICIO RAPIDO #1: 
-        -> Crear un servicio que tenga las operaciones sumatoria y multiplicatoria
-            -> Sumatoria: suma todos los elementos de un array
-                -> Input: array
-                -> Out: numero
-            -> multiplicatoria: multiplicar todos los elementos de un array
-                -> Input: array
-                -> Out: numero
 
-        -> Exponer estas operaciones en dos estados
+        PARTE 1: 
 
-            -> Sumatoria: POST /sumatoria
-                {
-                    "parametros": [1, 2, 3, 4]
-                }
-            
-            -> multiplicatoria: PUT /multiplicatoria
-                {
-                    "parametros": [1, 2, 3, 4]
-                }
+            -> Crear un servicio que tenga las operaciones sumatoria y multiplicatoria
+                -> Sumatoria: suma todos los elementos de un array
+                    -> Input: array
+                    -> Out: numero
+
+                    sumatoria: function (arr){
+
+                    }
+
+                -> multiplicatoria: multiplicar todos los elementos de un array
+                    -> Input: array
+                    -> Out: numero
+
+                    multiplicatoria: function (arr){
+
+                    }
+        
+        PARTE 2: 
+
+            -> Exponer estas operaciones en dos estados
+
+                -> Sumatoria: POST /sumatoria
+                    {
+                        "parametros": [1, 2, 3, 4]
+                    }
+                
+                -> multiplicatoria: PUT /multiplicatoria
+                    {
+                        "parametros": [1, 2, 3, 4]
+                    }
+
+REPASO: 
+
+    -> API: 
+        -> Application Programming Interface
+
+        Def/ Un conjunto de URLs que consume y envia datos
+
+            -> Conjunto de URLs
+            -> consume y envia
+            -> datos
+
+    EJEMPLO: Login de facebook
+
+    PASO 1
+
+        Interfaz : Pagina web 
+            -> Inputs
+                -> Email
+                -> Clave
+            -> Accion: Ingresar
+
+    PASO 2
+
+        -> Envio los datos del usuario [email, clave] a una URL de Facebook
+            -> url: facebook.com/api/login
+        -> Recibe los datos
+        -> Los procesa a traves de un algoritmo
+            -> Verifico si le usuario A es A y no B 
+
+    PASO 3
+
+        -> Luego de la verificacion
+        -> FLUJOS
+            -> Si el usuario A es correcto entonces envio el dato para entrar a Facebook
+            -> Si el usuario A no es correcto entonces envio un error
+    
+    PASO 4
+
+        -> Recibo la informacion de una URL de Facebook
+        -> Aplico el flujo que corresponde
+
+
+    DUDAS: 
+
+        -> Conjunto de URLs -> donde? -> Servidor web
+        -> consume y envia -> con que? -> HTTP 
+        -> datos -> que tipo? -> JSON
+
+        Servidor WEB:
+            -> Maquina (local/cloud) que corre servicios que escuchan I/O a traves de un puerto
+                -> Servicio: HTTP Server
+                    -> Express (NodeJS)
+
+        HTTP: 
+
+            Protocolo de transmision documentos -> texto
+                -> HTML
+                -> (JSON)
+                -> XML
+                etc    
+
+        JSON: 
+            -> std de datos -> rapido para parsear
+
+            -> Parser es una funcion
+            Input (JSON) -> [ parser (Input) -> Est. de datos nativa ] (JavaScript)
+    ---- 
+
+
+    MINIMO BACKEND
+
+    EJEMPLO: Aplicacion que le paso el apellido y me devuelve el nombre.
+
+    Input: Casadevall -> Out: Alex
+
+    PASO 2: 
+
+        -> Recibo el apellido (datos) a una URL de mi API (localhost:3000/nombre)
+        -> Lo procesa a traves de un algoritmo
+            -> dado el apellido busco cual el nombre
+
+    PASO 3: 
+
+        -> Luego de la verificacion
+        -> FLUJOS
+            -> Si encuentro el apellido envio el nombre que corresponde
+            -> Si no encuentro el apellido envio un error
+    ----
+
+    PASO 2: Capa de servicio
+    PASO 3: Capa de la APP (app.js)
+
+    RECETA DESDE 0: 
+
+        0. Tengo que tener instalado nodejs y nodemon
+        ---
+        1. Inicio el proyecto
+            -> npm init 
+            -> Despues de responder las preguntas (enter a todo)
+            -> crea el archivo: package.json
+                -> El package.json guarda las dependencias de mi proyecto
+
+        2. Archivo: .gitignore
+            -> Editarlo y escribir las siguientes lineas
+                node_modules
+                package-lock.json
+
+        3. Instalar las dependencias del backend minimo
+            -> npm i --save express cors body-parser mysql
+        
+        4. crear el archivo app.js
+        5. Instanciar el servidor web (http-server)
+        6. Levantar el http server / levantamos el backend: nodemon app.js
+        7. Chequear que esta corriendo el servidor web
+            -> http://localhost:3000 -> En un navegador
+            -> Si veo el resultado del GET entonces todo esta funcionando OK
+        8. Creamos la carpeta de servicios (services)
+        9. Creo el archivo de la logica del problema
+            -> nombre.service.js
+        10. Defino el modulo y lo exporto para que se pueda reutilizar en cualquier
+            lado del backend
+        11. Requerir el servicio dentro del app.js
+            -> Puedo requerir una funcion en particular
+            -> Puedo requerir el modulo entero
+        12. Definimos el estado de la API
+            -> Metodo: GET
+            -> URL: /nombre/:apellido
+            -> Donde :apellido es dinamico
+                -> Obtener por el req.params.apellido
+        13. Conectamos este estado con el metodo del servicio
+        14. Le pasamos la respuesta al servidor web
+            -> res.send(respuesta)
+        15. Pruebo a traves de la URL: http://localhost:3000/nombre/casadevall
+            -> Me deberia devolver {'nombre': 'alex'}
