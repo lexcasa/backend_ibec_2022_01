@@ -1,0 +1,69 @@
+REPASAR EJERCICIOS RAPIDOS
+
+    Tenemos 3 grandes practicas
+
+        - Setup
+        - Algoritmia
+        - Integracion 
+    
+    EJERCICIO RAPIDO #0: Sumar 1 al numero que envie
+
+        Algoritmo
+
+        Input: 1 -> Out: 2
+        Input: 130 -> Out: 131
+
+        Integracion
+
+            GET
+                /suma-uno/1
+
+            Respuesta
+            
+            {
+                "resultado": 2
+            }
+    
+    EJERCICIO RAPIDO #1: Envio nombre para saludo
+
+        Algoritmo
+
+        Input: "alex" -> Out: "Hola alex"
+        Input: "juan" -> Out: "Hola juan"
+
+        Integracion
+
+            GET
+                /saludo/alex
+
+            Respuesta
+            
+            {
+                "resultado": "Hola alex"
+            }
+
+    EJERCICIO RAPIDO #10: Buscar una persona por nombre
+
+        Algoritmo: 
+
+            Input: "alex" -> Out: {"nombre": "alex", "apellido": "Casadevall"}
+            Input: "alex" -> Out: {"nombre": "alexander", "apellido": "Perez"}
+
+        Integracion: 
+        
+            POST
+                {
+                    "nombre":"alex"
+                }
+            
+        Respuesta: 
+
+            {
+                "resulado": [
+                    {"nombre": "alex", "apellido": "Casadevall"},
+                    {"nombre": "alexander", "apellido": "Perez"}
+                ]
+            }
+    
+
+
