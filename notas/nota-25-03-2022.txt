@@ -24,7 +24,25 @@ REPASAR EJERCICIOS RAPIDOS
                 "resultado": 2
             }
     
-    EJERCICIO RAPIDO #1: Envio nombre para saludo
+    EJERCICIO RAPIDO #1: Resta 5 al numero que envie
+
+        Algoritmo
+
+        Input: 10 -> Out: 5
+        Input: 130 -> Out: 125
+
+        Integracion
+
+            GET
+                /resta-cinco/10
+
+            Respuesta
+            
+            {
+                "resultado": 5
+            }
+    
+    EJERCICIO RAPIDO #2: Envio nombre para saludo
 
         Algoritmo
 
