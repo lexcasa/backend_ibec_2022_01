@@ -60,7 +60,7 @@ REPASAR EJERCICIOS RAPIDOS
                 "resultado": "Hola alex"
             }
 
-    EJERCICIO RAPIDO #10: Buscar una persona por nombre
+    EJERCICIO RAPIDO #3: Buscar una persona por nombre
 
         Algoritmo: 
 
