@@ -73,3 +73,39 @@ EJEMPLO: Tienda de celulares donde los clientes pueden comprar (que: celular) on
 
         -> Cuales son los actores del problema
         -> Relacion
+
+
+    SOL #1: 
+
+    Entidades: 
+
+        -> Producto (cafe)
+        -> Proveedor 
+
+    Relacion: 
+
+        -> stock
+
+    Producto: {
+        nombre,
+        precio,
+        marca
+    }
+
+    Proveedor: {
+        nombre,
+        rut,
+        rubro
+    }
+
+    Stock: {
+        producto, 
+        proveedor,
+        cantidad
+    }
+
+    Tabla: Stock
+
+        -> | nombre         | proveedor     | cantidad |
+           | Juan Valdez    | Pepe SA       | -2       |
+           | Juan Valdez    | Pepe SA       | 10       |
