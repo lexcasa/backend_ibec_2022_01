@@ -1,0 +1,75 @@
+BASE DE DATOS ( MYSQL )
+
+- Para que sirve?
+
+    -> Almacenar datos y persistir en el tiempo
+    -> Abstraer la realidad y convertir en datos
+
+
+EJEMPLO: Tienda de celulares donde los clientes pueden comprar (que: celular) online
+
+    -> Cliente - Compra - Producto
+
+    -> Entidades: Conjunto de caracteristicas que hacen unico los actores del problema
+    -> Modelo: Transformar la entidad en datos
+
+    -> Entidades: Cliente, Producto
+    -> Relacion: Comprar
+
+
+    Cliente: {
+        nombre, 
+        documento,
+        email,
+        fechaNacimiento
+    }
+
+    Producto: {
+        nombre,
+        precio,
+        marca
+    }
+
+    MYSQL: Base de datos relacional
+
+        Modelo: Una tabla donde sus columnas hacen referencia a las propiedades de mi entidad
+
+    Tabla: Cliente
+        -> | nombre | documento | email             | fechaNacimiento |
+           | Alex   | 123213    | alex@gmail.com    | 1991-12-29      | 
+
+    Tabla: Producto
+
+        -> | nombre     | precio | marca |
+           | iPhone 11  | 13213  | apple | 
+
+    PASOS PARA MODELAR UN PROBLEMA
+
+        -> Identificar las entidades (ver los actores del problema)
+        -> Identificar las relaciones
+        -> Crear las tablas de la base de datos
+
+    RELACION: 
+
+    Compra: {
+        cliente,
+        producto,
+        cantidad
+    }
+
+    Tabla: Compra
+
+        -> | cliente | producto     | cantidad |
+           | Alex    | iPhone 11    | 2        | 
+
+
+    EJERCICIO RAPIDO #1: Deposito de cafe (bolsas de cafe) y quiero tener control del stock
+
+        -> Cuales son los actores del problema
+        -> Relacion
+
+    
+    EJERCICIO RAPIDO #2: Tengo una tienda de componentes para autos y quiero saber cuantos componentes vendi por marca
+
+        -> Cuales son los actores del problema
+        -> Relacion
