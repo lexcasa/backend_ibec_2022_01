@@ -1,0 +1,43 @@
+- Manipular los datos de las operaciones CRUD de la base de datos
+    -> Create
+    -> Read
+    -> Update
+    -> Delete
+
+
+CREATE - QUERY: 
+
+    INSERT INTO producto (nombre, precio, marca)
+    VALUES ("CAFE. GOLD ROAST 6", 123, "NESCAFE")
+
+    QUERY: 
+
+        INSERT INTO tabla_nombre (prop1, prop2, ..., propN)
+        VALUES (val1, val2, ..., valN)
+
+READ - QUERY: 
+
+    SELECT * FROM producto
+    WHERE precio = 123
+
+    -> Va a filtrar los registros que tiene el valor 123 de precio
+
+    QUERY: 
+
+        SELECT prop1, ..., propN FROM tabla_nombre
+        WHERE [LOGICA]
+        
+        [LOGICA] : 
+            -> prop(i) = val(i)
+            -> prop(i) LIKE '%val(i)%' -> prop: "NESCAFE"
+                                            -> marca LIKE '%CA%'
+        prop1, ..., propN -> *
+
+
+EJERCICIO RAPIDO #1
+
+    1. En la tabla proveedor vamos a crear 5 registros de proveedores diferentes
+    2. Crear una query que busque proveedor por rut
+    3. Crear una query que busque proveedor por id
+    4. Crear una query que busque proveedor por el nombre que contenga el string 'AB'
+        -> WHERE nombre LIKE '%AB%'
