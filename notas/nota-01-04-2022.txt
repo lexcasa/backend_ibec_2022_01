@@ -87,20 +87,22 @@ EJEMPLO: Tienda de celulares donde los clientes pueden comprar (que: celular) on
         -> stock
 
     Producto: {
+        id,
         nombre,
         precio,
         marca
     }
 
     Proveedor: {
+        id,
         nombre,
         rut,
         rubro
     }
 
     Stock: {
-        producto, 
-        proveedor,
+        idProducto, 
+        idProveedor,
         cantidad
     }
 
@@ -109,3 +111,89 @@ EJEMPLO: Tienda de celulares donde los clientes pueden comprar (que: celular) on
         -> | nombre         | proveedor     | cantidad |
            | Juan Valdez    | Pepe SA       | -2       |
            | Juan Valdez    | Pepe SA       | 10       |
+    
+    SOL. #2 / 01
+
+        Entidades: 
+
+            -> Componente
+            -> Cliente
+
+        Relacion: 
+
+            -> Compra
+
+
+        Componente: {
+            nombre,
+            marca,
+            modelo
+        }
+
+        Cliente: {
+            nombre,
+            documento,
+            email
+        }
+
+        Compra: {
+            componente,
+            cliente,
+            cantidad
+        }
+    
+    SOL. #2 / 02
+
+        Entidades:
+
+            - Componente
+            - Marca
+            - Cliente
+
+        Componente: {
+            nombre,
+            modelo
+        }
+
+        Marca: {
+            nombre
+        }
+
+        Cliente: {
+            nombre,
+            documento,
+            email
+        }
+
+       Relaciones:
+
+            - ComponenteMarca
+            - Compra
+
+                Compra { 
+                    componente,
+                    cliente,
+                    cantidad
+                }
+
+                ComponenteMarca {
+                    componente,
+                    marca
+                }
+    
+
+    SQL: Structured Query Lang
+
+        - Fundamentos de datos
+            - Manipular los datos de las operaciones CRUD de la base de datos
+                -> Create
+                -> Read
+                -> Update
+                -> Delete
+
+    
+    CREATE: 
+        -> Crear un registro en la tabla de producto
+
+        INSERT INTO productos (nombre, precio, marca)
+        VALUES ("CAFE J. VALDEZ", 120, "JUAN VALDEZ");
