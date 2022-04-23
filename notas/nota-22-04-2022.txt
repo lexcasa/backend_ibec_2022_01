@@ -121,3 +121,8 @@ PREGUNTA: Como conecto la base de datos con mi backend en nodejs?
                 -> {
                     lo que me devuelva el servicio de MYSQL
                 }
+
+QUERY de autenticacion de usuario
+
+    SELECT * FROM usuarios
+    WHERE usuario = 'alex' AND clave = MD5('123')
