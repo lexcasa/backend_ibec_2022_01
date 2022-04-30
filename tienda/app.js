@@ -2,7 +2,10 @@ const express       = require('express')
 const bodyParser    = require('body-parser')
 const app           = express()
 const port          = 3000
+global.SECRET       = 'key'
 const Producto      = require('./services/productos.service')
+const Usuario       = require('./services/usuarios.service')
+const Middleware    = require('./services/middleware')
 
 app.use(bodyParser.json())
 app.get('/', (req, res) => {
@@ -16,6 +19,7 @@ app.get('/productos', async (req, res) => {
     })
 })
 
+// No tiene un middleware - ruta publica
 // Obtener un producto por ID
 app.get('/productos/:id', async (req, res) => {
     const id = req.params.id
@@ -34,7 +38,7 @@ app.post('/productos/buscar', async (req, res) => {
     })
 })
 
-app.post('/productos', async (req, res) => {
+app.post('/productos', Middleware.verify, async (req, res) => {
     const producto  = req.body
     const resultado = await Producto.nuevo(producto)
     res.send({
@@ -42,7 +46,7 @@ app.post('/productos', async (req, res) => {
     })
 })
 
-app.put('/productos', async (req, res) => {
+app.put('/productos', Middleware.verify, async (req, res) => {
     const producto  = req.body
     const resultado = await Producto.editar(producto)
     res.send({
@@ -50,9 +54,17 @@ app.put('/productos', async (req, res) => {
     })
 })
 
-app.delete('/productos/:id', async (req, res) => {
+app.delete('/productos/:id', Middleware.verify, async (req, res) => {
     const id  = req.params.id
     const resultado = await Producto.eliminar(id)
+    res.send({
+        response: resultado
+    })
+})
+
+app.post('/login', async (req, res) => {
+    const usr  = req.body
+    const resultado = await Usuario.login(usr.usuario, usr.clave)
     res.send({
         response: resultado
     })

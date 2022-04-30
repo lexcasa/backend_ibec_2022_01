@@ -7,10 +7,10 @@ const connection = mysql.createConnection({
 });
 
 const Mdb = {
-    query: function (query){
+    query: function (query, fields){
         return new Promise( (resolve, reject) => {
             connection.connect();
-            connection.query(query, function (error, results, fields) {
+            connection.query(query, fields, function (error, results, fields) {
                 if(error){
                     reject(error)
                 } else {

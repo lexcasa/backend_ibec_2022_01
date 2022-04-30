@@ -1,0 +1,22 @@
+QUERY de autenticacion de usuario
+
+    SELECT * FROM usuarios
+    WHERE usuario = 'alex' AND clave = MD5('123')
+
+
+    [API] <---> LOGIN ----> Token
+        -> JWT
+        -> Algoritmo
+
+    Separar rutas publicas de privadas
+
+        Publica: 
+            -> obtener los productos de la tienda
+
+        Privada: 
+            -> crear un producto nuevo
+    Middleware
+
+        [API] <---> Middleware <---> Request (Headers: Token)
+
+    Seguridad de las Querys con prepared statments
